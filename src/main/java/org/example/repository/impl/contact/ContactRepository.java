@@ -1,4 +1,4 @@
-package org.example.repository.contact;
+package org.example.repository.impl.contact;
 
 import org.example.entity.Contact;
 
