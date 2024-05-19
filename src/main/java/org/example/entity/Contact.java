@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 @Table(name = "contacts")
 public class Contact {
     @Id
@@ -16,9 +17,9 @@ public class Contact {
     @Column(name = "id")
     private Long id;
     @Column(name = "firstname")
-    private String name;
+    private String firstname;
     @Column(name = "secondname")
-    private String secondName;
+    private String secondname;
     @Column(name = "phone")
     private String phone;
 }
