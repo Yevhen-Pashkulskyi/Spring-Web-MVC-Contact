@@ -1,0 +1,86 @@
+@startuml
+class org.example.config.WebMvcConfig {
++ InternalResourceViewResolver resolver()
++ void addResourceHandlers(ResourceHandlerRegistry)
+}
+
+class org.example.config.AppContext {
+- Environment env
++ LocalSessionFactoryBean sessionFactory()
+- DataSource dataSource()
+- Properties hibernateProperties()
++ HibernateTransactionManager getTransactionManager()
+}
+
+
+class org.example.config.AppInitializer {
+# Class<?>[] getRootConfigClasses()
+# Class<?>[] getServletConfigClasses()
+# String[] getServletMappings()
+}
+
+class org.example.repository.impl.contact.ContactRepositoryImpl {
+- SessionFactory sessionFactory
++ boolean create(Contact)
++ Optional<List<Contact>> fetchAll()
++ Optional<Contact> fetchById(Long)
++ boolean update(Long,Contact)
++ boolean delete(Long)
+}
+
+
+class org.example.controller.ContactController {
+- ContactService contactService
++ String fetchAllContacts(Model)
++ String createContact(Model)
++ RedirectView addContact(Contact,HttpServletRequest)
++ String updateContact(Long,Model)
++ RedirectView changeContact(Contact,HttpServletRequest)
++ RedirectView deleteContact(Long,HttpServletRequest)
+}
+
+
+interface org.example.repository.impl.contact.ContactRepository {
+~ boolean create(Contact)
+~ Optional<List<Contact>> fetchAll()
+~ Optional<Contact> fetchById(Long)
+~ boolean update(Long,Contact)
+~ boolean delete(Long)
+}
+
+class org.example.controller.AppController {
++ String home(Model)
+}
+
+class org.example.service.impl.contact.ContactServiceImpl {
+~ ContactRepository contactRepository
++ boolean createContact(Contact)
++ List<Contact> fetchAll()
++ Contact fetchById(Long)
++ boolean updateContact(Long,Contact)
++ boolean deleteContact(Long)
+}
+
+
+interface org.example.service.ContactService {
+~ boolean createContact(Contact)
+~ List<Contact> fetchAll()
+~ Contact fetchById(Long)
+~ boolean updateContact(Long,Contact)
+~ boolean deleteContact(Long)
+}
+
+class org.example.entity.Contact {
+- Long id
+- String firstname
+- String lastname
+- String phone
+}
+
+
+
+org.springframework.web.servlet.config.annotation.WebMvcConfigurer <|.. org.example.config.WebMvcConfig
+org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer <|-- org.example.config.AppInitializer
+org.example.repository.impl.contact.ContactRepository <|.. org.example.repository.impl.contact.ContactRepositoryImpl
+org.example.service.ContactService <|.. org.example.service.impl.contact.ContactServiceImpl
+@enduml
