@@ -21,11 +21,11 @@ public class ContactRepositoryImpl implements ContactRepository {
     @Override
     public boolean create(Contact contact) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "INSERT INTO Contact (firstname, secondname, phone) " +
-                "VALUES (:firstname, :secondname, :phone)";
+        String hql = "INSERT INTO Contact (firstname, lastname, phone) " +
+                "VALUES (:firstname, :lastname, :phone)";
         MutationQuery query = session.createMutationQuery(hql);
         query.setParameter("firstname", contact.getFirstname());
-        query.setParameter("secondname", contact.getSecondname());
+        query.setParameter("lastname", contact.getLastname());
         query.setParameter("phone", contact.getPhone());
         return query.executeUpdate() > 0;
     }
@@ -62,11 +62,11 @@ public class ContactRepositoryImpl implements ContactRepository {
         try {
             Session session = sessionFactory.getCurrentSession();
             String hql = "UPDATE Contact SET firstname = : firstname," +
-                    "secondname = :secondname," +
+                    "lastname = :lastname," +
                     "phone =:phone";
             MutationQuery query = session.createMutationQuery(hql);
             query.setParameter("firstname", contact.getFirstname());
-            query.setParameter("secondname", contact.getSecondname());
+            query.setParameter("lastname", contact.getLastname());
             query.setParameter("phone", contact.getPhone());
             query.executeUpdate();
             return true;
