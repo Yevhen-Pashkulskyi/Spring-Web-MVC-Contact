@@ -22,14 +22,14 @@ public class ContactController {
     @RequestMapping("/contacts")
     public String fetchAllContacts(Model model) {
         List<Contact> list = contactService.fetchAll();
-        model.addAttribute("firstname", "Contacts");
-        model.addAttribute("lastname", "Contacts");
+        model.addAttribute("title", "Contacts");
+        model.addAttribute("contacts", list);
         return "contact_list";
     }
 
     @RequestMapping("create-contact")
     public String createContact(Model model) {
-        model.addAttribute("firstname", "Add Contact");
+        model.addAttribute("title", "Add Contact");
         return "contact_add";
     }
 
@@ -37,17 +37,17 @@ public class ContactController {
     public RedirectView addContact(@ModelAttribute Contact contact, HttpServletRequest request) {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl(request.getContextPath() + "/contacts");
-//            if (contactService.createContact(contact))
-//                return redirectView;
-//            else
-        return redirectView;
+        if (contactService.createContact(contact))
+            return redirectView;
+        else
+            return redirectView;
     }
 
     @RequestMapping("/update-contact/{id}")
     public String updateContact(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("firstname", "Update Contact");
+        model.addAttribute("title", "Update Contact");
         Contact contact = contactService.fetchById(id);
-        model.addAttribute("lastname", contact);
+        model.addAttribute("contact", contact);
         return "contact_update";
     }
 
@@ -55,19 +55,19 @@ public class ContactController {
     public RedirectView changeContact(@ModelAttribute Contact contact, HttpServletRequest request) {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl(request.getContextPath() + "/contacts");
-//        if (contactService.createContact(contact))
-//                return redirectView;
-//            else
-        return redirectView;
+        if (contactService.updateContact(contact.getId(), contact))
+            return redirectView;
+        else
+            return redirectView;
     }
 
     @RequestMapping("/delete-contact/{id}")
     public RedirectView deleteContact(@PathVariable("id") Long id, HttpServletRequest request) {
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl(request.getContextPath() + "/contacts");
-//        if (contactService.createContact(contact))
-//                return redirectView;
-//            else
-        return redirectView;
+        if (contactService.deleteContact(id))
+            return redirectView;
+        else
+            return redirectView;
     }
 }

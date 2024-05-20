@@ -18,19 +18,19 @@
                         <input type="hidden" value="${contact.id}" name="id" class="form-control">
                     </div>
 					<div>
-						<label for="firstname"><span style="font-size:12px;">Firstname</span></label>
+						<label for="firstname"><span style="font-size:12px;">First Name</span></label>
 						<input type="text"	class="form-control" id="firstname" name="firstname"
 							placeholder="Contact firstname..." value="${contact.firstname}">
 					</div>
 					<div>
-                        <label for="lastname"><span style="font-size:12px;">Lastname</span></label>
+                        <label for="lastname"><span style="font-size:12px;">Last Name</span></label>
                         <input type="text"	class="form-control" id="lastname" name="lastname"
                             placeholder="Contact lastname..." value="${contact.lastname}">
                     </div>
 					<div>
 						<label for="phone"><span style="font-size:12px;">Phone</span></label>
-						<textarea class="form-control" name="phone" id="phone"
-							rows="3" placeholder="Contact phone..." >${contact.phone}</textarea>
+						<input class="form-control" name="phone" id="phone"
+							 placeholder="Contact phone format 111 123-4567."value="${contact.phone}">
 					</div>
 					<div class="container text-center mb-4"><br>
 						<a href="${pageContext.request.contextPath}/contacts" class="btn btn-outline-primary btn-sm">Back</a>

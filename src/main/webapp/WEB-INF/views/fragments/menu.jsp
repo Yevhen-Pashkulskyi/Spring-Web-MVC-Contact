@@ -6,7 +6,7 @@
     <a class="navbar-brand fw-bold" style="color: white;">
       <img src="./resources/icons/stack-of-contacts.png" alt="Logo"
       width="32" height="36" class="d-inline-block align-text-top">
-      Book Club
+      Contact Service
     </a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">

@@ -17,19 +17,19 @@
                 оскільки Hibernate розуміє саме такий напис -->
 				<form action="add-contact" method="post">
 					<div>
-						<label for="firstname"><span style="font-size:12px;">Firstname</span></label>
+						<label for="firstname"><span style="font-size:12px;">First Name</span></label>
 						<input type="text" class="form-control fw-light" id="firstname" name="firstname"
 							placeholder="Contact firstname...">
 					</div>
 					<div>
-                        <label for="lastname"><span style="font-size:12px;">Lastname</span></label>
+                        <label for="lastname"><span style="font-size:12px;">Last Name</span></label>
                         <input type="text" class="form-control fw-light" id="lastname" name="lastname"
                             placeholder="Contact lastname...">
                     </div>
 					<div>
 						<label for="phone"><span style="font-size:12px;">Phone</span></label>
-						<textarea class="form-control fw-light" name="phone" id="phone"
-							rows="3" placeholder="Contact phone..."></textarea>
+						<input class="form-control fw-light" name="phone" id="phone"
+							 placeholder="Contact phone format 111 123-4567">
 					</div>
 					<div class="container text-center mb-4"><br>
 						<a href="${pageContext.request.contextPath}/contacts" class="btn btn-outline-primary btn-sm">Back</a>

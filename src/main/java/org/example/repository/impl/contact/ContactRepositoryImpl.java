@@ -63,11 +63,12 @@ public class ContactRepositoryImpl implements ContactRepository {
             Session session = sessionFactory.getCurrentSession();
             String hql = "UPDATE Contact SET firstname = : firstname," +
                     "lastname = :lastname," +
-                    "phone =:phone";
+                    "phone =:phone WHERE id = :id";
             MutationQuery query = session.createMutationQuery(hql);
             query.setParameter("firstname", contact.getFirstname());
             query.setParameter("lastname", contact.getLastname());
             query.setParameter("phone", contact.getPhone());
+            query.setParameter("id", id);
             query.executeUpdate();
             return true;
         } catch (Exception e) {
